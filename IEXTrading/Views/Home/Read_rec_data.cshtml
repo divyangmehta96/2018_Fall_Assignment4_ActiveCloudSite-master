@@ -1,0 +1,61 @@
+﻿@model IEnumerable<IEXTrading.Models.Rec>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>@ViewData["Title"] - Drugs Related Death</title>
+        <script type="text/javascript" src="~/js/Chart.min.js"></script>
+        <script type="text/javascript" src="~/lib/chartjs-plugin-annotation-master/chartjs-plugin-annotation.min.js"></script>
+        <script type="text/javascript" src="~/js/site.js"></script>
+        <link rel="stylesheet" type="text/css" href="~/css/main.css" />
+
+        <link rel="stylesheet"
+              type="text/css"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Pacifico|Roboto&display=swap" rel="stylesheet">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    </head>
+    <body>
+        <br/><br/>
+        <div class="data-summary">
+            <p class="summary">Below is a tiny portion of a huge dataset containing various information like Date of the accident, Age and sex of the victim, Cause of Death and the description of injury</p>
+        </div>
+        <div class="summary_table" style="overflow-x:auto;">
+            <table>
+                <tr>
+                    <th>DATE</th>
+                    <th>AGE</th>
+                    <th>SEX</th>
+                    <th>RACE</th>
+                    <th>LOCATION</th>
+                    <th>DESCRIPTION OF INJURY</th>
+                    <th>CAUSE OF DEATH</th>
+                    <th>MANNER OF DEATH</th>
+                </tr>
+                <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.date) </td>
+                        <td> @Html.DisplayFor(modelItem => item.age) </td>
+                        <td> @Html.DisplayFor(modelItem => item.sex) </td>
+                        <td> @Html.DisplayFor(modelItem => item.race) </td>
+                        <td> @Html.DisplayFor(modelItem => item.location) </td>
+                        <td> @Html.DisplayFor(modelItem => item.descriptionofinjury) </td>
+                        <td> @Html.DisplayFor(modelItem => item.cod) </td>
+                        <td> @Html.DisplayFor(modelItem => item.mannerofdeath) </td>
+                    </tr>
+                 }
+                    <tr>
+                        <td> <a id="dbopt" asp-controller="Home" asp-action="Savedata">SAVE </a> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <script> alertDbSave(@ViewBag.dbSuccessComp); </script>
+        </div>
+    </body>
+<script> alertDbSave(@ViewBag.dbSuccessComp); </script>
